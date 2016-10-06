@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/title_fragment"
+        layout="@layout/title_view"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/divider" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/car_count_info"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/carcount_background"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:text="@string/car_count_text1"
+                android:textColor="@color/text_color_orange"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/car_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20"
+                android:textColor="@color/carcount_color"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/car_count_text2"
+                android:textColor="@color/text_color_orange"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/right_arrow"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="11dp"
+            android:src="@drawable/right_arrow" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_car"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</LinearLayout>
