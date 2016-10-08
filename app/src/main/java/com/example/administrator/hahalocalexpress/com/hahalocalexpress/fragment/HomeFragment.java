@@ -4,10 +4,10 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.administrator.hahalocalexpress.R;
@@ -58,11 +58,6 @@ public class HomeFragment extends Fragment {
         for (String f : fee) {
             list_car_fee.add(f);
         }
-
-        System.out.println("size=========" + list_car_pic.size());
-        System.out.println("list_car_name=========" + list_car_name.size());
-        System.out.println("list_car_prince=========" + list_car_prince.size());
-
     }
 
     @Nullable
@@ -81,5 +76,12 @@ public class HomeFragment extends Fragment {
         carInfoAdapter = new CarInfoAdapter(mContext, list_car_pic, list_car_name, list_car_prince,
                 list_car_weight, list_car_size, list_car_fee);
         mListView.setAdapter(carInfoAdapter);
+//        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                    if (mListView.getChildAt(i).equals()
+//            }
+//        });
     }
+
 }

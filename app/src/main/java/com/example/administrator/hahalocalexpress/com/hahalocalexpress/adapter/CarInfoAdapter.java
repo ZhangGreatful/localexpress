@@ -1,6 +1,7 @@
 package com.example.administrator.hahalocalexpress.com.hahalocalexpress.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.administrator.hahalocalexpress.R;
+import com.example.administrator.hahalocalexpress.com.hahalocalexpress.activity.CompleteOrderInfoActivity;
+import com.example.administrator.hahalocalexpress.com.hahalocalexpress.activity.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +21,7 @@ import java.util.List;
  */
 public class CarInfoAdapter extends BaseAdapter {
 
+    private Context mContext;
     private LayoutInflater mInflater;
     List<String> list_car_name;
     List<Integer> list_car_pic;
@@ -35,6 +39,7 @@ public class CarInfoAdapter extends BaseAdapter {
         this.list_car_size = car_size;
         this.list_car_prince = car_price;
         this.list_car_weight = car_weight;
+        this.mContext = context;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -74,6 +79,14 @@ public class CarInfoAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(mContext, CompleteOrderInfoActivity.class);
+                mContext.startActivity(intent);
+            }
+        });
         Integer integer = list_car_pic.get(position);
         String car_name = list_car_name.get(position);
         String car_price = list_car_prince.get(position);

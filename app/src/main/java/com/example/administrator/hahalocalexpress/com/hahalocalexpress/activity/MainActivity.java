@@ -23,7 +23,7 @@ public class MainActivity extends FragmentActivity {
 
     private FragmentTabHost mTabHost;
     private LayoutInflater inflater;
-    private Class mFragmentArray[] = {HomeFragment.class, FavorableFragment.class, OrderFragment.class,
+    private Class mFragmentArray[] = {HomeFragment.class,OrderFragment.class, FavorableFragment.class,
             MineFragment.class};
     private int mImageArray[] = {R.drawable.tab_home, R.drawable.tab_order,
             R.drawable.tab_favorable, R.drawable.tab_mine,};

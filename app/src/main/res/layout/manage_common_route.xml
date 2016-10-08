@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/manage_title"
+        layout="@layout/title_manage_route"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <ImageView
+        android:id="@+id/manage_divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/manage_title"
+        android:src="@drawable/long_divider" />
+
+    <ListView
+        android:id="@+id/manage_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/manage_divider"
+        android:background="@drawable/route_background" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/manage_list"
+        android:paddingLeft="10dp"
+        android:text="您也可以在订单详情中收藏常用路线哦"
+        android:textColor="@color/text_color_light"
+        android:textSize="20sp" />
+
+    <include
+        layout="@layout/add_new_route"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

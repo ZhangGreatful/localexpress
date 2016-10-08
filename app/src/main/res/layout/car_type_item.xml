@@ -51,7 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textColor="@color/text_color_orange"
+                    android:textColor="@color/carcount_color"
                     android:textSize="16sp" />
 
                 <TextView

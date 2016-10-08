@@ -4,25 +4,36 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTabHost;
+import android.support.v4.view.ViewPager;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.example.administrator.hahalocalexpress.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Administrator on 2016/9/29.
  */
 public class OrderFragment extends Fragment {
+
     private Context mContext;
-    private FragmentTabHost orderTabHost;
-    private LayoutInflater inflater;
-    private String textArray[] = {"全部", "服务中", "待评价", "取消"};
-    private Class fragmentArray[] = {AllOderFragment.class, ServicingFragment.class, EvaluateFragment.class, CanceledFragment.class};
+    private List<Fragment> fragmentList;
+    private Fragment allOrderFragment, canceledFragment, servicingFragment, evaluateFragment;
+    private FragmentPagerAdapter mPagerAdapter;
+    private TextView tab1Text, tab2Text, tab3Text, tab4Text;
+    private ViewPager mViewPager;
+    private View tabLine;
+    private TabOnClickListener onClickListener;
 
     @Nullable
     @Override
@@ -34,47 +45,119 @@ public class OrderFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         this.mContext = getActivity();
-        orderTabHost = (FragmentTabHost) this.getActivity().findViewById(R.id.order_tabhost);
-        inflater = LayoutInflater.from(mContext);
-        orderTabHost.setup(mContext, getFragmentManager());
-        int count = fragmentArray.length;
-        for (int i = 0; i < count; i++) {
-            TabHost.TabSpec tabSpec = orderTabHost.newTabSpec(textArray[i]).setIndicator(getTabItemView(i));
-            orderTabHost.addTab(tabSpec, fragmentArray[i], null);
-        }
-        updateTab(orderTabHost);
-        orderTabHost.setOnTabChangedListener(tabChangeListener);
+        initAdapter();
+        initView();
     }
 
-    private TabHost.OnTabChangeListener tabChangeListener = new TabHost.OnTabChangeListener() {
-        @Override
-        public void onTabChanged(String s) {
-            updateTab(orderTabHost);
-        }
-    };
+    @Override
+    public void onResume() {
+        super.onResume();
+        mViewPager.setCurrentItem(0);
+    }
 
-    private void updateTab(FragmentTabHost mTabHost) {
-        for (int i = 0; i < mTabHost.getTabWidget().getChildCount(); i++) {
-            View view = mTabHost.getTabWidget().getChildAt(i);
-            TextView tv = (TextView) mTabHost.getTabWidget().getChildAt(i).findViewById(R.id.tv_text);
-            ImageView iv = (ImageView) mTabHost.getTabWidget().getChildTabViewAt(i).findViewById(R.id.iv_bottom_line);
-            if (mTabHost.getCurrentTab() == i) {//选中
-                iv.setVisibility(View.VISIBLE);
-            } else {//不选中
-                iv.setVisibility(View.INVISIBLE);
+    private void initAdapter() {
+        fragmentList = new ArrayList<>();
+        allOrderFragment = new AllOderFragment();
+        canceledFragment = new CanceledFragment();
+        servicingFragment = new ServicingFragment();
+        evaluateFragment = new EvaluateFragment();
+        fragmentList.add(allOrderFragment);
+        fragmentList.add(servicingFragment);
+        fragmentList.add(evaluateFragment);
+        fragmentList.add(canceledFragment);
+        mPagerAdapter = new FragmentPagerAdapter(getFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                return fragmentList.get(position);
+            }
+
+            @Override
+            public int getCount() {
+                return fragmentList.size();
+            }
+        };
+    }
+
+    private void initView() {
+        tab1Text = (TextView) this.getActivity().findViewById(R.id.tab1);
+        tab2Text = (TextView) this.getActivity().findViewById(R.id.tab2);
+        tab3Text = (TextView) this.getActivity().findViewById(R.id.tab3);
+        tab4Text = (TextView) this.getActivity().findViewById(R.id.tab4);
+        tabLine = this.getActivity().findViewById(R.id.tab_line);
+
+        onClickListener = new TabOnClickListener();
+        tab1Text.setOnClickListener(onClickListener);
+        tab2Text.setOnClickListener(onClickListener);
+        tab3Text.setOnClickListener(onClickListener);
+        tab4Text.setOnClickListener(onClickListener);
+
+        //初始化ViewPager，并且设置ViewPager的监听器
+        mViewPager = (ViewPager) this.getActivity().findViewById(R.id.pager);
+        mViewPager.setAdapter(mPagerAdapter);
+        mViewPager.setCurrentItem(0);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                //因为这里只有三个Tab,所有横条的宽带应该是屏幕的1/3
+                int lineWidth = getLineWidth(4);
+
+                //横条随着ViewPager一起滑动
+                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) tabLine.getLayoutParams();
+                params.leftMargin = (int) ((positionOffset + position) * lineWidth);
+                tabLine.setLayoutParams(params);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+    /**
+     * 根据标题的个数获取横条应该设置的宽度
+     *
+     * @param tabCount
+     * @return
+     */
+    public int getLineWidth(int tabCount) {
+        DisplayMetrics metric = new DisplayMetrics();
+        this.getActivity().getWindowManager().getDefaultDisplay().getMetrics(metric);
+        int lineWidth = metric.widthPixels / tabCount;
+        return lineWidth;
+    }
+
+
+    private class TabOnClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.tab1:
+                    //设置当前的页面
+                    mViewPager.setCurrentItem(0);
+                    break;
+
+                case R.id.tab2:
+                    //设置当前的页面
+                    mViewPager.setCurrentItem(1);
+                    break;
+
+                case R.id.tab3:
+                    //设置当前的页面
+                    mViewPager.setCurrentItem(2);
+                    break;
+                case R.id.tab4:
+                    //设置当前的页面
+                    mViewPager.setCurrentItem(3);
+                    break;
+                default:
+                    break;
             }
         }
-    }
-
-    //      为tab键设置图片和文字
-    private View getTabItemView(int index) {
-        View view = inflater.inflate(R.layout.order_tab_view, null);
-        ImageView imageView = (ImageView) view.findViewById(R.id.iv_bottom_line);
-        TextView textView = (TextView) view.findViewById(R.id.tv_text);
-        imageView.setVisibility(View.VISIBLE);
-        textView.setText(textArray[index]);
-        return view;
-
     }
 }
 
