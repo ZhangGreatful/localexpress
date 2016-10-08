@@ -11,12 +11,11 @@ import android.widget.TextView;
 
 import com.example.administrator.hahalocalexpress.R;
 import com.example.administrator.hahalocalexpress.com.hahalocalexpress.activity.CompleteOrderInfoActivity;
-import com.example.administrator.hahalocalexpress.com.hahalocalexpress.activity.MainActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 首页 车辆信息的Adapter
  * Created by Administrator on 2016/9/30.
  */
 public class CarInfoAdapter extends BaseAdapter {
