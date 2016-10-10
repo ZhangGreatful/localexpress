@@ -1,14 +1,11 @@
 package com.example.administrator.hahalocalexpress.com.hahalocalexpress.fragment;
 
-import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTabHost;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -16,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.example.administrator.hahalocalexpress.R;
@@ -30,6 +26,7 @@ import java.util.List;
  */
 public class OrderFragment extends Fragment implements View.OnClickListener {
 
+    private ImageView mBack;
     private Context mContext;
     private List<Fragment> fragmentList;
     private Fragment allOrderFragment, canceledFragment, servicingFragment, evaluateFragment;
@@ -84,6 +81,7 @@ public class OrderFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initView() {
+        mBack= (ImageView) this.getActivity().findViewById(R.id.iv_back);
         tab1Text = (TextView) this.getActivity().findViewById(R.id.tab1);
         tab2Text = (TextView) this.getActivity().findViewById(R.id.tab2);
         tab3Text = (TextView) this.getActivity().findViewById(R.id.tab3);
@@ -91,6 +89,7 @@ public class OrderFragment extends Fragment implements View.OnClickListener {
         tabLine = this.getActivity().findViewById(R.id.tab_line);
         callCar = (ImageView) this.getActivity().findViewById(R.id.iv_call_car);
 
+        mBack.setOnClickListener(this);
         onClickListener = new TabOnClickListener();
         tab1Text.setOnClickListener(onClickListener);
         tab2Text.setOnClickListener(onClickListener);
@@ -144,6 +143,10 @@ public class OrderFragment extends Fragment implements View.OnClickListener {
             case R.id.iv_call_car:
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.iv_back:
+                Intent intent1 = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent1);
                 break;
         }
     }
