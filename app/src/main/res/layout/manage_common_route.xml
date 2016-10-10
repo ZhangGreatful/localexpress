@@ -16,23 +16,71 @@
         android:layout_below="@+id/manage_title"
         android:src="@drawable/long_divider" />
 
-    <ListView
-        android:id="@+id/manage_list"
+    <LinearLayout
+        android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/add"
         android:layout_below="@+id/manage_divider"
-        android:background="@drawable/route_background" />
+        android:orientation="vertical"
+        android:visibility="gone">
 
-    <TextView
+        <ListView
+            android:id="@+id/manage_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/manage_divider"
+            android:background="@drawable/route_background" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/manage_list"
+            android:paddingLeft="10dp"
+            android:text="您也可以在订单详情中收藏常用路线哦"
+            android:textColor="@color/text_color_light"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/no_route"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/manage_list"
-        android:paddingLeft="10dp"
-        android:text="您也可以在订单详情中收藏常用路线哦"
-        android:textColor="@color/text_color_light"
-        android:textSize="20sp" />
+        android:layout_above="@+id/add"
+        android:background="@drawable/route_background"
+        android:layout_below="@+id/manage_divider">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="70dp"
+            android:src="@drawable/no_common_route" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/icon"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="8dp"
+            android:text="您还没有常用路线哦"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/text_color_light"
+            android:paddingTop="5dp"
+            android:text="赶快在订单详情中收藏或者添加一个吧"
+            android:textSize="15sp" />
+    </RelativeLayout>
 
     <include
+        android:id="@+id/add"
         layout="@layout/add_new_route"
         android:layout_width="match_parent"
         android:layout_height="70dp"

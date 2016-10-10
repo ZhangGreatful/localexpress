@@ -44,8 +44,7 @@ public class SelectCommonRouteActivity extends Activity implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
-                Intent intent = new Intent(SelectCommonRouteActivity.this, CompleteOrderInfoActivity.class);
-                startActivity(intent);
+                finish();
                 break;
             case R.id.tv_manage:
                 Intent intent1 = new Intent(SelectCommonRouteActivity.this, ManageCommonRouteActivity.class);

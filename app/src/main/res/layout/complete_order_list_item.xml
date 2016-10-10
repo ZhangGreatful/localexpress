@@ -12,11 +12,10 @@
 
         <ImageView
             android:id="@+id/iv_start"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-           android:layout_marginLeft="10dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_centerVertical="true"
-            android:paddingLeft="10dp"
+            android:paddingLeft="12dp"
             android:src="@drawable/start" />
 
         <TextView
@@ -28,14 +27,14 @@
             android:hint="请输入起始地"
             android:paddingLeft="15dp"
             android:textColor="@color/text_color_light"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
 
 
         <ImageView
             android:id="@+id/iv_start_arrow"
             android:layout_width="18dp"
             android:layout_height="18dp"
-            android:layout_marginLeft="140dp"
+            android:layout_marginLeft="180dp"
             android:src="@drawable/right_arrow" />
     </LinearLayout>
 

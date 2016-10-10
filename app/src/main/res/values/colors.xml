@@ -11,4 +11,6 @@
     <color name="text_color_light">#666666</color>
     <color name="text_color_orange">#967309</color>
     <color name="mine_head_background">#f5f5f5</color>
+    <color name="grey">#BFBFBF</color>
+    <color name="gainsboro">#dcdcdc</color><!--淡灰色 -->
 </resources>

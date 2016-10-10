@@ -15,18 +15,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".com.hahalocalexpress.activity.CompleteOrderInfoActivity">
-            <intent-filter>
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".com.hahalocalexpress.activity.SelectCommonRouteActivity">
-            <intent-filter>
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".com.hahalocalexpress.activity.CompleteOrderInfoActivity"></activity>
+        <activity android:name=".com.hahalocalexpress.activity.SelectCommonRouteActivity"></activity>
+        <activity android:name=".com.hahalocalexpress.activity.ManageCommonRouteActivity"></activity>
+        <activity android:name=".com.hahalocalexpress.activity.AddCommonRouteActivity"></activity>
+        <activity android:name=".com.hahalocalexpress.activity.SelectCityActivity"></activity>
     </application>
 
 </manifest>

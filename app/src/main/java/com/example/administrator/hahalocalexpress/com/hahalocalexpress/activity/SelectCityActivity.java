@@ -1,75 +1,65 @@
 package com.example.administrator.hahalocalexpress.com.hahalocalexpress.activity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.ScrollView;
-import android.widget.TextView;
 
 import com.example.administrator.hahalocalexpress.R;
-import com.example.administrator.hahalocalexpress.com.hahalocalexpress.adapter.CompleteOrderAdapter;
+import com.example.administrator.hahalocalexpress.com.hahalocalexpress.adapter.CityAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 完善订单信息
- * Created by Administrator on 2016/10/7.
+ * Created by Administrator on 2016/10/9.
  */
-public class CompleteOrderInfoActivity extends Activity implements View.OnClickListener {
+public class SelectCityActivity extends Activity implements View.OnClickListener {
+    private ListView listView;
     private ImageView mBack;
-    private TextView mCommonRoute;
-    private ListView mListView;
-    private CompleteOrderAdapter mAdapter;
-    private LinearLayout relativeLayout;
+    private CityAdapter adapter;
     private List<String> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.complete_order_info);
+        setContentView(R.layout.select_city);
         initView();
     }
 
     private void initView() {
-        list.add("请输入始发地");
-        list.add("请输入目的地");
-        mBack = (ImageView) findViewById(R.id.iv_back);
-        mCommonRoute = (TextView) findViewById(R.id.tv_common_route);
-        mListView = (ListView) findViewById(R.id.lv_complete_order);
-        mAdapter = new CompleteOrderAdapter(this, list);
-        relativeLayout = (LinearLayout) findViewById(R.id.add_destination);
-        mListView.setAdapter(mAdapter);
-        mAdapter.notifyDataSetChanged();
-        setListViewHeightBasedOnChildren(mListView);
+        mBack = (ImageView) findViewById(R.id.close);
+        listView = (ListView) findViewById(R.id.city_list);
+        adapter = new CityAdapter(this, list);
+        setListViewHeightBasedOnChildren(listView);
+        listView.setAdapter(adapter);
+        list.add("北京");
+        list.add("上海");
+        list.add("上海");
+        list.add("上海");
+        list.add("上海");
+        list.add("上海");
+        list.add("上海");
+        list.add("上海");
+        list.add("上海");
+        list.add("上海");
+        list.add("上海");
+
 
         mBack.setOnClickListener(this);
-        mCommonRoute.setOnClickListener(this);
-        relativeLayout.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.iv_back:
+            case R.id.close:
                 finish();
                 break;
-            case R.id.tv_common_route:
-                Intent intent1 = new Intent(CompleteOrderInfoActivity.this, SelectCommonRouteActivity.class);
-                startActivity(intent1);
-                break;
-            case R.id.add_destination:
-                list.add("请输入途径地");
-                setListViewHeightBasedOnChildren(mListView);
-                mAdapter.notifyDataSetChanged();
         }
     }
 
@@ -95,4 +85,5 @@ public class CompleteOrderInfoActivity extends Activity implements View.OnClickL
         params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         listView.setLayoutParams(params);
     }
+
 }

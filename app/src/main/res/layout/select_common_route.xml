@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@drawable/route_background"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/route_background">
 
     <include
         android:id="@+id/title"
@@ -17,14 +17,41 @@
         android:layout_below="@+id/title"
         android:src="@drawable/long_divider" />
 
-    <ListView
-        android:id="@+id/common_route_list"
-        android:background="@drawable/route_background"
+    <LinearLayout
+        android:id="@+id/list"
+        android:layout_below="@+id/iv_divider"
         android:layout_width="match_parent"
+        android:layout_above="@+id/add"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/iv_divider" />
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/common_route_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_divider"
+            android:background="@drawable/route_background" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:src="@drawable/long_divider" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="15sp"
+            android:gravity="center_vertical"
+            android:paddingLeft="70dp"
+            android:text="不使用常用路线" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:src="@drawable/long_divider" />
+    </LinearLayout>
 
     <include
+        android:id="@+id/add"
         layout="@layout/add_new_route"
         android:layout_width="match_parent"
         android:layout_height="80dp"

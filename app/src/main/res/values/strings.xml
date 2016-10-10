@@ -5,4 +5,5 @@
     <string name="car_weight">载重: </string>
     <string name="car_info">长*宽*高: </string>
     <string name="car_fee">超公里费: </string>
+    <string name="confirm_order">货物险由速运官方合作伙伴</string>
 </resources>
