@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
@@ -23,13 +25,14 @@ import java.util.List;
  * 完善订单信息
  * Created by Administrator on 2016/10/7.
  */
-public class CompleteOrderInfoActivity extends Activity implements View.OnClickListener {
+public class CompleteOrderInfoActivity extends Activity implements View.OnClickListener, AdapterView.OnItemClickListener {
     private ImageView mBack;
     private TextView mCommonRoute;
     private ListView mListView;
     private CompleteOrderAdapter mAdapter;
     private LinearLayout relativeLayout;
     private List<String> list = new ArrayList<>();
+    private Button btnNext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +50,14 @@ public class CompleteOrderInfoActivity extends Activity implements View.OnClickL
         mListView = (ListView) findViewById(R.id.lv_complete_order);
         mAdapter = new CompleteOrderAdapter(this, list);
         relativeLayout = (LinearLayout) findViewById(R.id.add_destination);
+        btnNext = (Button) findViewById(R.id.btn_next);
         mListView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
         setListViewHeightBasedOnChildren(mListView);
 
         mBack.setOnClickListener(this);
+        btnNext.setOnClickListener(this);
+        mListView.setOnItemClickListener(this);
         mCommonRoute.setOnClickListener(this);
         relativeLayout.setOnClickListener(this);
     }
@@ -62,6 +68,10 @@ public class CompleteOrderInfoActivity extends Activity implements View.OnClickL
             case R.id.iv_back:
                 finish();
                 break;
+            case R.id.btn_next:
+                Intent intent = new Intent(CompleteOrderInfoActivity.this, ConfirmOrderActivity.class);
+                startActivity(intent);
+                break;
             case R.id.tv_common_route:
                 Intent intent1 = new Intent(CompleteOrderInfoActivity.this, SelectCommonRouteActivity.class);
                 startActivity(intent1);
@@ -70,6 +80,7 @@ public class CompleteOrderInfoActivity extends Activity implements View.OnClickL
                 list.add("请输入途径地");
                 setListViewHeightBasedOnChildren(mListView);
                 mAdapter.notifyDataSetChanged();
+                break;
         }
     }
 
@@ -94,5 +105,11 @@ public class CompleteOrderInfoActivity extends Activity implements View.OnClickL
         ViewGroup.LayoutParams params = listView.getLayoutParams();
         params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         listView.setLayoutParams(params);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Intent intent = new Intent(CompleteOrderInfoActivity.this, ShippingInfoActivity.class);
+        startActivity(intent);
     }
 }

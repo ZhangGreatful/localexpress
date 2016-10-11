@@ -1,7 +1,9 @@
 package com.example.administrator.hahalocalexpress.com.hahalocalexpress.activity;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.animation.Animation;
@@ -19,8 +21,8 @@ public class SplashActivity extends Activity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_activity);
 
 
@@ -48,6 +50,7 @@ public class SplashActivity extends Activity{
 
             }
 
+            @TargetApi(Build.VERSION_CODES.ECLAIR)
             @Override
             public void onAnimationEnd(Animation animation) {
                 // TODO Auto-generated method stub

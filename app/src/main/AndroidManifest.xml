@@ -4,10 +4,10 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/logo_120"
+        android:icon="@mipmap/logo_80"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@android:style/Theme.Holo.Light">
+        android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
         <activity android:name=".com.hahalocalexpress.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +21,8 @@
         <activity android:name=".com.hahalocalexpress.activity.ManageCommonRouteActivity"></activity>
         <activity android:name=".com.hahalocalexpress.activity.AddCommonRouteActivity"></activity>
         <activity android:name=".com.hahalocalexpress.activity.SelectCityActivity"></activity>
+        <activity android:name=".com.hahalocalexpress.activity.ConfirmOrderActivity"></activity>
+        <activity android:name=".com.hahalocalexpress.activity.LoginActivity"></activity>
     </application>
 
 </manifest>
