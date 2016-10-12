@@ -33,16 +33,203 @@
         android:layout_height="wrap_content"
         android:src="@drawable/long_divider" />
 
-    <shanyao.tabpagerindictor.TabPageIndicator
-        android:id="@+id/indicator"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        />
+        android:layout_height="match_parent">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <LinearLayout
+            android:id="@+id/ll_tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/one_line_background"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10dp">
+
+                <LinearLayout
+                    android:id="@+id/ll_base"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/base_problem" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="基础问题"
+                        android:textColor="@color/text_color_light" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/shu_xian" />
+
+                <LinearLayout
+                    android:id="@+id/ll_order"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/order_problem" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="订单问题"
+                        android:textColor="@color/text_color_light" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/shu_xian" />
+
+                <LinearLayout
+                    android:id="@+id/ll_pay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/pay_problem" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="支付问题"
+                        android:textColor="@color/text_color_light" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/shu_xian" />
+
+                <LinearLayout
+                    android:id="@+id/ll_coupon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/coupon_problem" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="优惠券问题"
+                        android:textColor="@color/text_color_light" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                android:paddingBottom="3dip">
+
+                <ImageView
+                    android:id="@+id/iv_bottom_line"
+                    android:layout_width="90dip"
+                    android:layout_height="2dip"
+                    android:scaleType="matrix"
+                    android:src="#ff9e35" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/ll_blank"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_below="@+id/ll_tab"
+            android:background="@color/mine_head_background" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_below="@+id/ll_blank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/two_lines_background"
+            android:persistentDrawingCache="animation" />
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/problem_feedback" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="问题反馈"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/text_color_light" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/contact_service" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="联系客服"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/text_color_light" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

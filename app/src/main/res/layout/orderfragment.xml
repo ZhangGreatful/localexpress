@@ -17,9 +17,9 @@
     <RelativeLayout
         android:id="@+id/have_order"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/up_background"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <LinearLayout
             android:id="@+id/tab_layout"
@@ -67,15 +67,13 @@
         <View
             android:id="@+id/tab_line"
             android:layout_width="95dp"
-            android:layout_height="5dp"
+            android:layout_height="2dp"
             android:layout_below="@id/tab_layout"
             android:background="@drawable/yellow_bottom_line" />
-
-
         <android.support.v4.view.ViewPager
             android:id="@+id/pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/tab_line" />
     </RelativeLayout>
 
@@ -83,6 +81,7 @@
         android:id="@+id/no_order"
         android:background="@color/mine_head_background"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="match_parent">
 
         <ImageView

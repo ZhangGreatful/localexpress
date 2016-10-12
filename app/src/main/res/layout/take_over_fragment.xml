@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="发货到" />
+
+        <TextView
+            android:id="@+id/tv_bj"
+            android:layout_width="40dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/fram_background"
+            android:gravity="center"
+            android:text="北京"
+            android:textColor="@drawable/text_color" />
+
+        <TextView
+            android:id="@+id/tv_tj"
+            android:layout_width="40dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/fram_background"
+            android:gravity="center"
+            android:text="天津"
+            android:textColor="@drawable/text_color" />
+
+        <TextView
+            android:id="@+id/tv_sh"
+            android:layout_width="40dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/fram_background"
+            android:gravity="center"
+            android:text="三河"
+            android:textColor="@drawable/text_color" />
+
+        <TextView
+            android:id="@+id/tv_lf"
+            android:layout_width="40dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/fram_background"
+            android:gravity="center"
+            android:text="廊坊"
+            android:textColor="@drawable/text_color" />
+
+        <TextView
+            android:id="@+id/tv_xf"
+            android:layout_width="40dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/fram_background"
+            android:gravity="center"
+            android:text="香河"
+            android:textColor="@drawable/text_color" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:src="@drawable/long_divider" />
+
+    <ListView
+        android:id="@+id/lv_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
+</LinearLayout>

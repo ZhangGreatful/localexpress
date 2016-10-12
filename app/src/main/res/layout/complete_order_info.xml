@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/common_price"
         android:layout_below="@+id/title_complete_order"
-        android:fillViewport="true">
+         >
 
         <LinearLayout
             android:id="@+id/ll_info"

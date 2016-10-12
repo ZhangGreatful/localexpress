@@ -108,8 +108,15 @@ public class CompleteOrderInfoActivity extends Activity implements View.OnClickL
     }
 
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Intent intent = new Intent(CompleteOrderInfoActivity.this, ShippingInfoActivity.class);
-        startActivity(intent);
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+        if(position<mAdapter.getCount()-1){
+            Intent intent = new Intent(CompleteOrderInfoActivity.this, ShippingInfoActivity.class);
+            startActivity(intent);
+        }else {
+            Intent intent = new Intent(CompleteOrderInfoActivity.this, TakeOverActivity.class);
+            startActivity(intent);
+        }
+
     }
 }
