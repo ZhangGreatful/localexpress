@@ -11,7 +11,10 @@ import android.widget.TextView;
 
 import com.example.administrator.hahalocalexpress.R;
 import com.example.administrator.hahalocalexpress.com.hahalocalexpress.activity.CompleteOrderInfoActivity;
+import com.example.administrator.hahalocalexpress.com.hahalocalexpress.bean.RegionType;
+import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,23 +25,11 @@ public class CarInfoAdapter extends BaseAdapter {
 
     private Context mContext;
     private LayoutInflater mInflater;
-    List<String> list_car_name;
-    List<Integer> list_car_pic;
-    List<String> list_car_prince;
-    List<String> list_car_weight;
-    List<String> list_car_size;
-    List<String> list_car_fee;
+    private RegionType regionType;
 
-
-    public CarInfoAdapter(Context context, List<Integer> car_pic, List<String> car_name, List<String> car_price,
-                          List<String> car_weight, List<String> car_size, List<String> car_fee) {
-        this.list_car_name = car_name;
-        this.list_car_pic = car_pic;
-        this.list_car_fee = car_fee;
-        this.list_car_size = car_size;
-        this.list_car_prince = car_price;
-        this.list_car_weight = car_weight;
+    public CarInfoAdapter(Context context,RegionType regionType ) {
         this.mContext = context;
+        this.regionType=regionType;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -46,13 +37,13 @@ public class CarInfoAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return list_car_name.size();
+        return regionType.getObj().size();
 
     }
 
     @Override
     public Object getItem(int position) {
-        return list_car_name.get(position);
+        return regionType.getObj().get(position);
     }
 
     @Override
@@ -86,18 +77,13 @@ public class CarInfoAdapter extends BaseAdapter {
                 mContext.startActivity(intent);
             }
         });
-        Integer integer = list_car_pic.get(position);
-        String car_name = list_car_name.get(position);
-        String car_price = list_car_prince.get(position);
-        String car_weight = list_car_weight.get(position);
-        String car_size = list_car_size.get(position);
-        String car_fee = list_car_fee.get(position);
-        viewHolder.iv_car.setImageResource(integer);
-        viewHolder.tv_car.setText(car_name);
-        viewHolder.tv_car_price.setText(car_price);
-        viewHolder.tv_car_weight.setText(car_weight);
-        viewHolder.tv_car_size.setText(car_size);
-        viewHolder.tv_car_fee.setText(car_fee);
+        String url=regionType.getObj().get(position).getCarimg();
+        Picasso.with(mContext).load(url).into(viewHolder.iv_car);
+        viewHolder.tv_car.setText(regionType.getObj().get(position).getCarname());
+        viewHolder.tv_car_price.setText(regionType.getObj().get(position).getStart_price());
+        viewHolder.tv_car_weight.setText(regionType.getObj().get(position).getCapaticy());
+        viewHolder.tv_car_size.setText(regionType.getObj().get(position).getLwh());
+        viewHolder.tv_car_fee.setText(regionType.getObj().get(position).getOverkilometersfee());
         return view;
     }
 

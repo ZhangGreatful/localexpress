@@ -8,7 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.administrator.hahalocalexpress.R;
+import com.example.administrator.hahalocalexpress.com.hahalocalexpress.bean.Object;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,10 +18,10 @@ import java.util.List;
  */
 public class CityAdapter extends BaseAdapter {
     private Context mContext;
-    private List<String> mList;
+    private List<Object> mList=new ArrayList<>();
     private LayoutInflater inflater;
 
-    public CityAdapter(Context context, List<String> list) {
+    public CityAdapter(Context context, List<Object> list) {
         this.mContext = context;
         this.mList = list;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -52,7 +54,7 @@ public class CityAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        viewHolder.textView.setText(mList.get(position));
+        viewHolder.textView.setText(mList.get(position).getCity_name());
         return view;
     }
 
